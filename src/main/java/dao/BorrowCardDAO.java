@@ -14,10 +14,10 @@ public class BorrowCardDAO {
         String bookTitle = resultSet.getString("book_title");
         String borrowerName = resultSet.getString("borrower_name");
         LocalDateTime borrowDate = resultSet.getTimestamp("borrow_date").toLocalDateTime();
-        LocalDateTime returnDateline= resultSet.getTimestamp("return_deadline").toLocalDateTime();
+        LocalDateTime returnDeadline= resultSet.getTimestamp("return_deadline").toLocalDateTime();
         int quantity = resultSet.getInt("quantity");
         String status = resultSet.getString("status");
-        return new BorrowCard(id, bookTitle, borrowerName, borrowDate, returnDateline, quantity, status);
+        return new BorrowCard(id, bookTitle, borrowerName, borrowDate, returnDeadline, quantity, status);
     }
     public List<BorrowCard> getAllBorrowCards(){
         List<BorrowCard> list = new ArrayList<>();
@@ -43,7 +43,7 @@ public class BorrowCardDAO {
             cs.setString(1, borrowCard.getBookTitle());
             cs.setString(2, borrowCard.getBorrowerName());
             cs.setTimestamp(3, Timestamp.valueOf(borrowCard.getBorrowDate()));
-            cs.setTimestamp(4, Timestamp.valueOf(borrowCard.getReturnDateline()));
+            cs.setTimestamp(4, Timestamp.valueOf(borrowCard.getReturnDeadline()));
             cs.setInt(5, borrowCard.getQuantity());
             cs.setString(6, borrowCard.getStatus());
             cs.execute();
@@ -80,7 +80,7 @@ public class BorrowCardDAO {
             cs.setString(2, borrowCard.getBookTitle());
             cs.setString(3, borrowCard.getBorrowerName());
             cs.setTimestamp(4, Timestamp.valueOf(borrowCard.getBorrowDate()));
-            cs.setTimestamp(5, Timestamp.valueOf(borrowCard.getReturnDateline()));
+            cs.setTimestamp(5, Timestamp.valueOf(borrowCard.getReturnDeadline()));
             cs.setInt(6, borrowCard.getQuantity());
             cs.setString(7, borrowCard.getStatus());
             cs.registerOutParameter(8, Types.BOOLEAN);
