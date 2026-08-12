@@ -54,8 +54,7 @@ public class BorrowCardDAO {
         }
     }
     public List<BorrowCard> getBorrowCardByBorrowerName(String borrowerName){
-        List<BorrowCard> list = getAllBorrowCards();
-
+        List<BorrowCard> list = new ArrayList<>();
         String sql = "SELECT * FROM  func_get_borrow_cards_by_borrower_name(?)";
         try (Connection conn = DBContext.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)){
@@ -87,8 +86,6 @@ public class BorrowCardDAO {
 
             cs.execute();
             return cs.getBoolean(8);
-
-
         }
         catch (SQLException e){
             e.printStackTrace();
