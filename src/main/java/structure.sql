@@ -90,7 +90,7 @@ BEGIN
         return_deadline = p_return_deadline,
         quantity  = p_quantity,
         status = p_status
-    WHERE card_id == p_card_id;
+    WHERE card_id = p_card_id;
 
     p_success := FOUND;
 end;
