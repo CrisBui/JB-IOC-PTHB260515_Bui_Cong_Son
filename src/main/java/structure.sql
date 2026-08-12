@@ -64,7 +64,7 @@ BEGIN
     RETURN QUERY
         SELECT bc.card_id, bc.book_title, bc.borrower_name, bc.borrow_date, bc.return_deadline, bc.quantity, bc.status
         FROM borrow_cards bc
-        WHERE LOWER(bc.borrower_name) LIKE LOWER('%' || bc.borrower_name ||'%');
+        WHERE LOWER(bc.borrower_name) LIKE LOWER('%' || p_borrower_name ||'%');
 end;
 $$;
 
